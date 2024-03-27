@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module: Generic functions &mdash; grip 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=29a6c3e3"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module: Fitting tools" href="fit_tools.html" />
+    <link rel="prev" title="Module: Histogram tools" href="histogram_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            grip
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="grip_nested_architecture.html">Before starting, understanding the GRIP nested architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_model.html">Build a GRIP instrument model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Module: Plotting tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrument_models.html">Module: Built-in instrument models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="histogram_tools.html">Module: Histogram tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module: Generic functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generic.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generic.Logger.close"><code class="docutils literal notranslate"><span class="pre">Logger.close()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generic.Logger.flush"><code class="docutils literal notranslate"><span class="pre">Logger.flush()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generic.Logger.write"><code class="docutils literal notranslate"><span class="pre">Logger.write()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#generic.check_init_guess"><code class="docutils literal notranslate"><span class="pre">check_init_guess()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic.get_injection_and_spectrum"><code class="docutils literal notranslate"><span class="pre">get_injection_and_spectrum()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic.get_zeta_coeff"><code class="docutils literal notranslate"><span class="pre">get_zeta_coeff()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic.return_neg_func"><code class="docutils literal notranslate"><span class="pre">return_neg_func()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic.tempering"><code class="docutils literal notranslate"><span class="pre">tempering()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fit_tools.html">Module: Fitting tools</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">grip</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Module: Generic functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/generic.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-generic">
+<span id="module-generic-functions"></span><h1>Module: Generic functions<a class="headerlink" href="#module-generic" title="Link to this heading"></a></h1>
+<p>This module gathers different and unrelated functions.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="generic.Logger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">generic.</span></span><span class="sig-name descname"><span class="pre">Logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generic.Logger" title="Link to this definition"></a></dt>
+<dd><p>Save the content of the console inside a txt file.</p>
+<p>Class allowing to save the content of the console inside a txt file.
+Found on the internet, source lost.</p>
+<p>To stop the log in the file, use the command <cite>sys.stdout.close()</cite>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="generic.Logger.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#generic.Logger.close" title="Link to this definition"></a></dt>
+<dd><p>Close the log file.</p>
+<p>Close the log file and print in the terminal is back to default
+settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="generic.Logger.flush">
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#generic.Logger.flush" title="Link to this definition"></a></dt>
+<dd><p>Present for python 3 compatibility.</p>
+<p>This flush method is needed for python 3 compatibility.
+This handles the flush command by doing nothing.
+You might want to specify some extra behavior here.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="generic.Logger.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generic.Logger.write" title="Link to this definition"></a></dt>
+<dd><p>Print the content in the terminal and in the log file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to print and log</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generic.check_init_guess">
+<span class="sig-prename descclassname"><span class="pre">generic.</span></span><span class="sig-name descname"><span class="pre">check_init_guess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">guess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_bound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u_bound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generic.check_init_guess" title="Link to this definition"></a></dt>
+<dd><p>Check the initial guess in config file are between the bounds for a        parameter to fit.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>guess<span class="classifier">float</span></dt><dd><p>value of the initial guess in config file.</p>
+</dd>
+<dt>l_bound<span class="classifier">float</span></dt><dd><p>value of the lower bound in config file.</p>
+</dd>
+<dt>u_bound<span class="classifier">float</span></dt><dd><p>value of the upper bound in config file.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>check<span class="classifier">bool</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the initial guess is not between the bounds.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generic.get_injection_and_spectrum">
+<span class="sig-prename descclassname"><span class="pre">generic.</span></span><span class="sig-name descname"><span class="pre">get_injection_and_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">photoA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">photoB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wl_scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wl_bounds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generic.get_injection_and_spectrum" title="Link to this definition"></a></dt>
+<dd><p>Get the distributions of the broadband injections and the spectra of        beams A and B.</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>photoA<span class="classifier">array-like</span></dt><dd><p>Values of the photometric output of beam A.</p>
+</dd>
+<dt>photoB<span class="classifier">array-like</span></dt><dd><p>Values of the photometric output of beam B.</p>
+</dd>
+<dt>wl_scale<span class="classifier">array-like</span></dt><dd><p>Wavelength of the spectra in nm.</p>
+</dd>
+<dt>wl_bounds<span class="classifier">2-tuple, optional</span></dt><dd><p>Boundaries between which the spectra are extracted.            The wavelengths are expressed in nm.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>2-tuple of 2d-array</dt><dd><p>The first element contains the broadband                injection of beams A and B, respectively. The second element                contains the spectra of beams A and B, respectively.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generic.get_zeta_coeff">
+<span class="sig-prename descclassname"><span class="pre">generic.</span></span><span class="sig-name descname"><span class="pre">get_zeta_coeff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wl_scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generic.get_zeta_coeff" title="Link to this definition"></a></dt>
+<dd><p>Interpolate the zeta coefficients for the requested wavelengths.</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>path<span class="classifier">string</span></dt><dd><p>Path to the zeta coefficients’ file.</p>
+</dd>
+<dt>wl_scale<span class="classifier">array</span></dt><dd><p>List of wavelength for which we want the zeta coefficients.</p>
+</dd>
+<dt>plot<span class="classifier">bool, optional</span></dt><dd><p>If <cite>True</cite>, the plot of the interpolated zeta coefficients            curve is displayed. The default is False.</p>
+</dd>
+<dt><a href="#id4"><span class="problematic" id="id5">**</span></a>kwargs<span class="classifier">extra keyword arguments</span></dt><dd><p><cite>wl_bounds</cite> prunes the zeta coeff arrays for them to all have        the same wavelength scale.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>coeff_new<span class="classifier">dict</span></dt><dd><p>Dictionary of the interpolated zeta coefficients.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generic.load_data">
+<span class="sig-prename descclassname"><span class="pre">generic.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kw_to_extract</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wl_edges</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generic.load_data" title="Link to this definition"></a></dt>
+<dd><p>Load the data from HDF5 file format, select the desired keywords and store the selected data        in a dictionary.</p>
+<section id="id7">
+<h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>data<span class="classifier">list</span></dt><dd><p>Sequence of hdf5 files.</p>
+</dd>
+<dt>wl_edges<span class="classifier">2-tuple</span></dt><dd><p>Minimum and maximum values of the wavelength to keep.</p>
+</dd>
+<dt>kw_to_extract<span class="classifier">list</span></dt><dd><p>Sequence of keywords to extract from the HDF5 files.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Returns<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>data_dic<span class="classifier">dict</span></dt><dd><p>Dictionary containing the loaded data.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generic.return_neg_func">
+<span class="sig-prename descclassname"><span class="pre">generic.</span></span><span class="sig-name descname"><span class="pre">return_neg_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generic.return_neg_func" title="Link to this definition"></a></dt>
+<dd><p>Return a callable which is the negative of a function: <cite>f(x) -&gt; -f(x)</cite>.</p>
+<p>It can be used to create a callable cost function one wants to minimize (e.g. <span class="math notranslate nohighlight">\(\chi^2\)</span> estimator).</p>
+<section id="id9">
+<h2>Parameters<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">callable</span></dt><dd><p>function to return the negative version.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h2>Returns<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>callable</dt><dd><p>negative version of the function.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="generic.tempering">
+<span class="sig-prename descclassname"><span class="pre">generic.</span></span><span class="sig-name descname"><span class="pre">tempering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tempering_factor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#generic.tempering" title="Link to this definition"></a></dt>
+<dd><p>Scale a function by a constant.
+It performs <em>tempering</em> in MCMC, i.e. to smoothen/sharpen the log-likelihood function.
+Indeed, if the log-likelihood decrease by 1 unit, it means the event is 2.7x less likely to happen.
+Some log-likelihood functions needs to be tempered before being explored by MCMC algorithm.</p>
+<p>Note: the posterior is widen/shrinked by the square root of the tempering factor <span class="math notranslate nohighlight">\(1 / \sqrt{tempering~factor}\)</span>.</p>
+<section id="id11">
+<h2>Parameters<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">callable</span></dt><dd><p>Function to rescale.</p>
+</dd>
+<dt>tempering_factor<span class="classifier">float</span></dt><dd><p>Scale factor.</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h2>Returns<a class="headerlink" href="#id12" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>callable</dt><dd><p>Rescaled function.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tempering</span><span class="p">(</span><span class="n">log_chi2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span> <span class="o">/</span> <span class="n">ddof</span><span class="p">)</span> <span class="c1"># Returns a reduced chi2 cost function</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="histogram_tools.html" class="btn btn-neutral float-left" title="Module: Histogram tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fit_tools.html" class="btn btn-neutral float-right" title="Module: Fitting tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, mamartinod.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
